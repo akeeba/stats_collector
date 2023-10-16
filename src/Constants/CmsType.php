@@ -14,14 +14,14 @@ namespace Akeeba\UsageStats\Collector\Constants;
  */
 final class CmsType
 {
-	/** @deprecated  */
+	/** @deprecated */
 	public const OLD_STANDALONE = 0;
 
 	public const JOOMLA = 1;
 
 	public const WORDPRESS = 2;
 
-	/** @deprecated  */
+	/** @deprecated */
 	public const CLASSICPRESS = 3;
 
 	public const STANDALONE = 4;

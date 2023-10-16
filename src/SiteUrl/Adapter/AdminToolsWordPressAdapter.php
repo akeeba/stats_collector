@@ -31,7 +31,7 @@ final class AdminToolsWordPressAdapter implements AdapterInterface
 	public function isAvailable(): bool
 	{
 		return defined('WPINC')
-			&& class_exists(Uri::class)
-			&& function_exists('home_url');
+		       && class_exists(Uri::class)
+		       && function_exists('home_url');
 	}
 }

@@ -27,7 +27,7 @@ class Sender
 	 * @var   string
 	 * @since 1.0.0
 	 */
-	private $serverUrl = '';
+	private $serverUrl;
 
 	/**
 	 * The request timeout for sending the usage statistics, in seconds
@@ -35,12 +35,12 @@ class Sender
 	 * @var   int
 	 * @since 1.0.0
 	 */
-	private $timeout = 5;
+	private $timeout;
 
 	public function __construct(string $serverUrl, int $timeout)
 	{
 		$this->serverUrl = $serverUrl;
-		$this->timeout = $timeout;
+		$this->timeout   = $timeout;
 	}
 
 	/**

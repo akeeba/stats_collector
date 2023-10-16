@@ -31,7 +31,7 @@ final class WordPressAdapter implements AdapterInterface
 
 		$tableName = $db->prefix . 'akeeba_common';
 
-		$query = 'SELECT `value` FROM `' . $tableName .'` WHERE `key` = %s';
+		$query = 'SELECT `value` FROM `' . $tableName . '` WHERE `key` = %s';
 		$db->prepare($query, $key);
 
 		return $db->get_var($query) ?? $default;
@@ -50,7 +50,7 @@ final class WordPressAdapter implements AdapterInterface
 		}
 
 		$tableName = $db->prefix . 'akeeba_common';
-		$data = [
+		$data      = [
 			'key'   => $key,
 			'value' => $value,
 		];
@@ -72,7 +72,7 @@ final class WordPressAdapter implements AdapterInterface
 	 * @return  wpdb|null
 	 * @since   1.0.0
 	 */
-	private function getDatabase()
+	private function getDatabase(): ?wpdb
 	{
 		global $wpdb;
 

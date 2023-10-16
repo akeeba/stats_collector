@@ -21,16 +21,16 @@ class DarkLinkAdapter extends AbstractAwfAdapter
 	/**
 	 * @inheritDoc
 	 */
-	protected function getContainer(): Container
+	public function isAvailable(): bool
 	{
-		return Factory::getContainer();
+		return class_exists(\Akeeba\DarkLink\Container::class);
 	}
 
 	/**
 	 * @inheritDoc
 	 */
-	public function isAvailable(): bool
+	protected function getContainer(): Container
 	{
-		return class_exists(\Akeeba\DarkLink\Container::class);
+		return Factory::getContainer();
 	}
 }

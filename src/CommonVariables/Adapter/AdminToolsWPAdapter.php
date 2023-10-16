@@ -115,7 +115,7 @@ final class AdminToolsWPAdapter implements AdapterInterface
 	 * @return  Driver|null
 	 * @since   1.0.0
 	 */
-	private function getDatabase()
+	private function getDatabase(): ?Driver
 	{
 		try
 		{

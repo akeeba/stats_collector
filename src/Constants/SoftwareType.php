@@ -109,7 +109,8 @@ final class SoftwareType
 				self::AKEEBASUBS_JOOMLA,
 				self::CMSUPDATE_JOOMLA,
 			]
-		)) {
+		))
+		{
 			return CmsType::JOOMLA;
 		}
 

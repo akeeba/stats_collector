@@ -79,22 +79,18 @@ final class JoomlaAdapter implements AdapterInterface
 
 		try
 		{
+			$commonVariableObject = (object) [
+				'key'   => $key,
+				'value' => $value,
+			];
+
 			if (!$count)
 			{
-				$insertObject = (object) [
-					'key'   => $key,
-					'value' => $value,
-				];
-				$db->insertObject('#__akeeba_common', $insertObject);
+				$db->insertObject('#__akeeba_common', $commonVariableObject);
 			}
 			else
 			{
-				$insertObject = (object) [
-					'key'   => $key,
-					'value' => $value,
-				];
-
-				$db->updateObject('#__akeeba_common', $insertObject, 'key');
+				$db->updateObject('#__akeeba_common', $commonVariableObject, 'key');
 			}
 		}
 		catch (Throwable $e)
@@ -121,7 +117,7 @@ final class JoomlaAdapter implements AdapterInterface
 	 * @return  DatabaseInterface|null
 	 * @since   1.0.0
 	 */
-	private function getDatabase()
+	private function getDatabase(): ?DatabaseInterface
 	{
 		try
 		{

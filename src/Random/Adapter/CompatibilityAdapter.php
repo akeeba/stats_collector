@@ -22,22 +22,19 @@ final class CompatibilityAdapter implements AdapterInterface
 	 */
 	public function getRandomBytes(int $length = 120): string
 	{
-		$length = (int) $length;
-		$sslStr = '';
-
 		/*
 		 * Collect any entropy available in the system along with a number
 		 * of time measurements of operating system randomness.
 		 */
-		$bitsPerRound = 2;
-		$maxTimeMicro = 400;
+		$bitsPerRound  = 2;
+		$maxTimeMicro  = 400;
 		$shaHashLength = 20;
-		$randomStr = '';
-		$total = $length;
+		$randomStr     = '';
+		$total         = $length;
 
 		// Check if we can use /dev/urandom.
 		$urandom = false;
-		$handle = null;
+		$handle  = null;
 
 		// This is PHP 5.3.3 and up
 		if (function_exists('stream_set_read_buffer') && @is_readable('/dev/urandom'))
@@ -52,17 +49,16 @@ final class CompatibilityAdapter implements AdapterInterface
 
 		while ($length > strlen($randomStr))
 		{
-			$bytes = ($total > $shaHashLength)? $shaHashLength : $total;
+			$bytes = ($total > $shaHashLength) ? $shaHashLength : $total;
 			$total -= $bytes;
 
 			/*
 			 * Collect any entropy available from the PHP system and filesystem.
 			 * If we have ssl data that isn't strong, we use it once.
 			 */
-			$entropy = rand() . uniqid(mt_rand(), true) . $sslStr;
+			$entropy = rand() . uniqid(mt_rand(), true);
 			$entropy .= implode('', @fstat(fopen(__FILE__, 'r')));
 			$entropy .= memory_get_usage();
-			$sslStr = '';
 
 			if ($urandom)
 			{
@@ -78,13 +74,13 @@ final class CompatibilityAdapter implements AdapterInterface
 				 *
 				 * Measure the time that the operations will take on average.
 				 */
-				$samples = 3;
+				$samples  = 3;
 				$duration = 0;
 
 				for ($pass = 0; $pass < $samples; ++$pass)
 				{
 					$microStart = microtime(true) * 1000000;
-					$hash = sha1(mt_rand(), true);
+					$hash       = sha1(mt_rand(), true);
 
 					for ($count = 0; $count < 50; ++$count)
 					{
@@ -92,7 +88,7 @@ final class CompatibilityAdapter implements AdapterInterface
 					}
 
 					$microEnd = microtime(true) * 1000000;
-					$entropy .= $microStart . $microEnd;
+					$entropy  .= $microStart . $microEnd;
 
 					if ($microStart >= $microEnd)
 					{
@@ -119,7 +115,7 @@ final class CompatibilityAdapter implements AdapterInterface
 				for ($pass = 0; $pass < $iter; ++$pass)
 				{
 					$microStart = microtime(true);
-					$hash = sha1(mt_rand(), true);
+					$hash       = sha1(mt_rand(), true);
 
 					for ($count = 0; $count < $rounds; ++$count)
 					{

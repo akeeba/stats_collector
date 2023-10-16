@@ -472,6 +472,8 @@ final class Version
 	/**
 	 * Parse the tag specified in the version
 	 *
+	 * @param   string  $tag
+	 *
 	 * @internal
 	 * @return  void
 	 * @since   1.0.0
@@ -498,6 +500,8 @@ final class Version
 
 	/**
 	 * Parse a part of the tag specified in the version
+	 *
+	 * @param   string  $part
 	 *
 	 * @internal
 	 * @return  void

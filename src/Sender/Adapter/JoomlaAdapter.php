@@ -7,6 +7,8 @@
 
 namespace Akeeba\UsageStats\Collector\Sender\Adapter;
 
+use Joomla\Http\HttpFactory;
+
 /**
  * Information Sending adapter for Joomla sites, version 4 or later
  *
@@ -30,7 +32,8 @@ final class JoomlaAdapter implements AdapterInterface
 	 */
 	public function sendStatistics(array $queryParameters): void
 	{
-		$http = \Joomla\Http\HttpFactory::getHttp(
+		$factory = new HttpFactory();
+		$http    = $factory->getHttp(
 			[
 				'follow_location' => true,
 				'userAgent'       => $this->getUserAgent(),

@@ -22,14 +22,6 @@ use Akeeba\UsageStats\Collector\SiteUrl\Adapter\SoloAdapter;
 
 final class SiteUrl
 {
-	/**
-	 * The adapter to get the site's URL
-	 *
-	 * @var   null|AdapterInterface
-	 * @since 1.0.0
-	 */
-	private $adapter = null;
-
 	private const ADAPTERS = [
 		PanopticonAdapter::class,
 		DarkLinkAdapter::class,
@@ -43,6 +35,14 @@ final class SiteUrl
 		ATSJoomlaAdapter::class,
 		GenericJoomlaAdapter::class,
 	];
+
+	/**
+	 * The adapter to get the site's URL
+	 *
+	 * @var   null|AdapterInterface
+	 * @since 1.0.0
+	 */
+	private $adapter = null;
 
 	/**
 	 * Gets the URL of the current site

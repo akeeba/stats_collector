@@ -10,6 +10,7 @@ namespace Akeeba\UsageStats\Collector\CommonVariables;
 use Akeeba\UsageStats\Collector\CommonVariables\Adapter\AdapterInterface;
 use Akeeba\UsageStats\Collector\CommonVariables\Adapter\AdminToolsWPAdapter;
 use Akeeba\UsageStats\Collector\CommonVariables\Adapter\AkeebaEngineAdapter;
+use Akeeba\UsageStats\Collector\CommonVariables\Adapter\DarkLinkAdapter;
 use Akeeba\UsageStats\Collector\CommonVariables\Adapter\JoomlaAdapter;
 use Akeeba\UsageStats\Collector\CommonVariables\Adapter\PanopticonAdapter;
 use Akeeba\UsageStats\Collector\CommonVariables\Adapter\WordPressAdapter;
@@ -21,6 +22,15 @@ use Akeeba\UsageStats\Collector\CommonVariables\Adapter\WordPressAdapter;
  */
 final class CommonVariables
 {
+	private const ADAPTERS = [
+		PanopticonAdapter::class,
+		DarkLinkAdapter::class,
+		AdminToolsWPAdapter::class,
+		JoomlaAdapter::class,
+		WordPressAdapter::class,
+		AkeebaEngineAdapter::class,
+	];
+
 	/**
 	 * The adapter to interact with the common variables
 	 *
@@ -28,15 +38,6 @@ final class CommonVariables
 	 * @since 1.0.0
 	 */
 	private $adapter = null;
-
-	private const ADAPTERS = [
-		PanopticonAdapter::class,
-		DarkLinkAdapter::class,
-		AdminToolsWPAdapter::class,
-		JoomlaAdapter::class,
-		WordPressAdapter::class,
-		AkeebaEngineAdapter::class
-	];
 
 	/**
 	 * Load a variable from the common variables table. If it does not exist, it returns the default value

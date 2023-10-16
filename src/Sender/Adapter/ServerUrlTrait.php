@@ -75,7 +75,7 @@ trait ServerUrlTrait
 	 * @return  string
 	 * @since   1.0.0
 	 */
-	protected function getUrl(array $queryParameters)
+	protected function getUrl(array $queryParameters): string
 	{
 		return $this->serverUrl . '?' . http_build_query($queryParameters);
 	}

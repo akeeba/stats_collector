@@ -18,14 +18,14 @@ final class DatabaseType
 
 	public const MYSQL = 1;
 
-	/** @deprecated  */
+	/** @deprecated */
 	public const SQLSERVER = 2;
 
-	/** @deprecated  */
+	/** @deprecated */
 	public const POSTGRESQL = 3;
 
 	public const MARIADB = 4;
 
-	/** @deprecated  */
+	/** @deprecated */
 	public const SQLITE = 5;
 }

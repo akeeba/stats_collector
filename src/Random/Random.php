@@ -22,7 +22,7 @@ final class Random
 	private const ADAPTERS = [
 		RandomBytesAdapter::class,
 		OpenSSLAdapter::class,
-		CompatibilityAdapter::class
+		CompatibilityAdapter::class,
 	];
 
 	/**

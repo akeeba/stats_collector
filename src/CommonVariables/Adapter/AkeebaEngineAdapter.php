@@ -111,7 +111,7 @@ final class AkeebaEngineAdapter implements AdapterInterface
 	 * @return  BaseDriver|null
 	 * @since   1.0.0
 	 */
-	private function getDatabase()
+	private function getDatabase(): ?BaseDriver
 	{
 		try
 		{
