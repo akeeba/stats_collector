@@ -420,6 +420,17 @@ final class StatsCollector
 	}
 
 	/**
+	 * Returns the statistics collection server URL.
+	 *
+	 * @return  string
+	 * @since   1.0.0
+	 */
+	public function getServerUrl(): string
+	{
+		return $this->serverUrl;
+	}
+
+	/**
 	 * Sets the request timeout, in seconds, for sending the statistics to the server.
 	 *
 	 * @param   int  $timeout  The request timeout, in seconds
