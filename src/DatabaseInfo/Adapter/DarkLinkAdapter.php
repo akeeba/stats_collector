@@ -10,7 +10,7 @@ namespace Akeeba\UsageStats\Collector\DatabaseInfo\Adapter;
 use Akeeba\DarkLink\Factory;
 use Awf\Container\Container;
 
-class DarkLinkAdapter extends AbstractAwfAdapter
+final class DarkLinkAdapter extends AbstractAwfAdapter
 {
 
 	/** @inheritDoc */

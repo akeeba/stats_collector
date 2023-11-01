@@ -24,6 +24,7 @@ use function strlen;
  * Usage Statistics collector
  *
  * @since  1.0.0
+ * @api
  */
 final class StatsCollector
 {

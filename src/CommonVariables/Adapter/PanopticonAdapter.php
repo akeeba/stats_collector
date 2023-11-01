@@ -15,7 +15,7 @@ use Awf\Container\Container;
  *
  * @since  1.0.0
  */
-class PanopticonAdapter extends AbstractAwfAdapter
+final class PanopticonAdapter extends AbstractAwfAdapter
 {
 
 	/**

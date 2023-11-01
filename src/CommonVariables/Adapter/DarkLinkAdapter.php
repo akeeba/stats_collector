@@ -15,7 +15,7 @@ use Awf\Container\Container;
  *
  * @since  1.0.0
  */
-class DarkLinkAdapter extends AbstractAwfAdapter
+final class DarkLinkAdapter extends AbstractAwfAdapter
 {
 
 	/**
