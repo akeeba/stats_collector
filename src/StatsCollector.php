@@ -197,6 +197,8 @@ final class StatsCollector
 		$sender = new Sender($this->serverUrl, $this->timeout);
 
 		$sender->sendStatistics($this->getQueryParameters());
+
+		$this->commonVariables->setCommonVariable('stats_lastrun', (new DateTime())->getTimestamp());
 	}
 
 	/**
