@@ -8,10 +8,23 @@
 namespace Akeeba\UsageStats\Collector\Sender;
 
 use Akeeba\UsageStats\Collector\Sender\Adapter\AdapterInterface;
+use Akeeba\UsageStats\Collector\Sender\Adapter\AkeebaBackupWordPressAdapter;
+use Akeeba\UsageStats\Collector\Sender\Adapter\AkeebaSoloAdapter;
+use Akeeba\UsageStats\Collector\Sender\Adapter\DarkLinkAdapter;
+use Akeeba\UsageStats\Collector\Sender\Adapter\JoomlaAdapter;
+use Akeeba\UsageStats\Collector\Sender\Adapter\PanopticonAdapter;
+use Akeeba\UsageStats\Collector\Sender\Adapter\WordPressAdapter;
 
 class Sender
 {
-	private const ADAPTERS = [];
+	private const ADAPTERS = [
+		JoomlaAdapter::class,
+		AkeebaBackupWordPressAdapter::class,
+		AkeebaSoloAdapter::class,
+		WordPressAdapter::class,
+		DarkLinkAdapter::class,
+		PanopticonAdapter::class,
+	];
 
 	/**
 	 * The adapter to get the site's URL
