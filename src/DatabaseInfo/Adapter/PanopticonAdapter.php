@@ -10,7 +10,7 @@ namespace Akeeba\UsageStats\Collector\DatabaseInfo\Adapter;
 use Akeeba\Panopticon\Factory;
 use Awf\Container\Container;
 
-class PanopticonAdapter extends AbstractAwfAdapter
+final class PanopticonAdapter extends AbstractAwfAdapter
 {
 
 	/** @inheritDoc */

@@ -24,6 +24,7 @@ use function strlen;
  * Usage Statistics collector
  *
  * @since  1.0.0
+ * @api
  */
 final class StatsCollector
 {
@@ -196,6 +197,8 @@ final class StatsCollector
 		$sender = new Sender($this->serverUrl, $this->timeout);
 
 		$sender->sendStatistics($this->getQueryParameters());
+
+		$this->commonVariables->setCommonVariable('stats_lastrun', (new DateTime())->getTimestamp());
 	}
 
 	/**
@@ -416,6 +419,17 @@ final class StatsCollector
 		$this->serverUrl = $serverUrl;
 
 		return $this;
+	}
+
+	/**
+	 * Returns the statistics collection server URL.
+	 *
+	 * @return  string
+	 * @since   1.0.0
+	 */
+	public function getServerUrl(): string
+	{
+		return $this->serverUrl;
 	}
 
 	/**

@@ -25,5 +25,12 @@
 		"psr-4": {
 			"Akeeba\\UsageStats\\Collector\\": "src"
 		}
+	},
+	"archive": {
+		"exclude": [
+			".idea/**",
+			".gitignore",
+			"composer.lock"
+		]
 	}
 }

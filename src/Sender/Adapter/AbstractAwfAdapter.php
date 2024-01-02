@@ -58,10 +58,7 @@ abstract class AbstractAwfAdapter implements AdapterInterface
 			);
 		}
 
-
 		$download->getFromURL($this->getUrl($queryParameters));
-
-
 	}
 
 	/**
