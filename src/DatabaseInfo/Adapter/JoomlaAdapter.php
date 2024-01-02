@@ -84,6 +84,6 @@ final class JoomlaAdapter implements AdapterInterface
 	 */
 	public function isAvailable(): bool
 	{
-		return defined('_JEXEC') && class_exists(DatabaseInterface::class);
+		return defined('_JEXEC') && interface_exists(DatabaseInterface::class);
 	}
 }

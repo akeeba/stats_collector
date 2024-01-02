@@ -106,7 +106,7 @@ final class JoomlaAdapter implements AdapterInterface
 		return defined('JVERSION')
 		       && version_compare(JVERSION, '4.0.0', 'ge')
 		       && defined('_JEXEC')
-		       && class_exists(DatabaseInterface::class)
+		       && interface_exists(DatabaseInterface::class)
 		       && class_exists(Factory::class)
 		       && ($this->getDatabase() instanceof DatabaseInterface);
 	}
