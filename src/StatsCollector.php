@@ -234,7 +234,7 @@ final class StatsCollector
 			return false;
 		}
 
-		$mustSendStatistics = $nextReportDate->diff($now)->invert == 1;
+		$mustSendStatistics = $nextReportDate->diff($now)->invert == 0;
 
 		if (!$mustSendStatistics)
 		{
