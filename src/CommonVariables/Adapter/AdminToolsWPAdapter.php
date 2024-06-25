@@ -33,7 +33,7 @@ final class AdminToolsWPAdapter implements AdapterInterface
 
 		try
 		{
-			$query = $db->getQuery(true)
+			$query = (method_exists($db, 'createQuery') ? $db->createQuery() : $db->getQuery(true))
 				->select($db->qn('value'))
 				->from($db->qn('#__akeeba_common'))
 				->where($db->qn('key') . ' = ' . $db->q($key));
@@ -64,7 +64,7 @@ final class AdminToolsWPAdapter implements AdapterInterface
 		try
 		{
 
-			$query = $db->getQuery(true)
+			$query = (method_exists($db, 'createQuery') ? $db->createQuery() : $db->getQuery(true))
 				->select('COUNT(*)')
 				->from($db->qn('#__akeeba_common'))
 				->where($db->qn('key') . ' = ' . $db->q($key));
@@ -79,14 +79,14 @@ final class AdminToolsWPAdapter implements AdapterInterface
 
 		if (!$count)
 		{
-			$query = $db->getQuery(true)
+			$query = (method_exists($db, 'createQuery') ? $db->createQuery() : $db->getQuery(true))
 				->insert($db->qn('#__akeeba_common'))
 				->columns([$db->qn('key'), $db->qn('value')])
 				->values($db->q($key) . ', ' . $db->q($value));
 		}
 		else
 		{
-			$query = $db->getQuery(true)
+			$query = (method_exists($db, 'createQuery') ? $db->createQuery() : $db->getQuery(true))
 				->update($db->qn('#__akeeba_common'))
 				->set($db->qn('value') . ' = ' . $db->q($value))
 				->where($db->qn('key') . ' = ' . $db->q($key));

@@ -37,7 +37,7 @@ abstract class AbstractAwfAdapter implements AdapterInterface
 			return $default;
 		}
 
-		$query = $db->getQuery(true)
+		$query = (method_exists($db, 'createQuery') ? $db->createQuery() : $db->getQuery(true))
 			->select($db->quoteName('value'))
 			->from($db->quoteName('#__akeeba_common'))
 			->where($db->quoteName('key') . ' = ' . $db->quote($key));
@@ -75,7 +75,7 @@ abstract class AbstractAwfAdapter implements AdapterInterface
 			return;
 		}
 
-		$query = $db->getQuery(true)
+		$query = (method_exists($db, 'createQuery') ? $db->createQuery() : $db->getQuery(true))
 			->select('COUNT(*)')
 			->from($db->quoteName('#__akeeba_common'))
 			->where($db->quoteName('key') . ' = ' . $db->quote($key));
@@ -92,14 +92,14 @@ abstract class AbstractAwfAdapter implements AdapterInterface
 
 		if (!$count)
 		{
-			$query = $db->getQuery(true)
+			$query = (method_exists($db, 'createQuery') ? $db->createQuery() : $db->getQuery(true))
 				->insert($db->quoteName('#__akeeba_common'))
 				->columns([$db->quoteName('key'), $db->quoteName('value')])
 				->values($db->quote($key) . ', ' . $db->quote($value));
 		}
 		else
 		{
-			$query = $db->getQuery(true)
+			$query = (method_exists($db, 'createQuery') ? $db->createQuery() : $db->getQuery(true))
 				->update($db->quoteName('#__akeeba_common'))
 				->set($db->quoteName('value') . ' = ' . $db->quote($value))
 				->where($db->quoteName('key') . ' = ' . $db->quote($key));

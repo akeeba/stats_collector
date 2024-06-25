@@ -30,7 +30,7 @@ final class JoomlaAdapter implements AdapterInterface
 			return $default;
 		}
 
-		$query = $db->getQuery(true)
+		$query = (method_exists($db, 'createQuery') ? $db->createQuery() : $db->getQuery(true))
 			->select($db->qn('value'))
 			->from($db->qn('#__akeeba_common'))
 			->where($db->qn('key') . ' = :key')
@@ -61,7 +61,7 @@ final class JoomlaAdapter implements AdapterInterface
 			return;
 		}
 
-		$query = $db->getQuery(true)
+		$query = (method_exists($db, 'createQuery') ? $db->createQuery() : $db->getQuery(true))
 			->select('COUNT(*)')
 			->from($db->qn('#__akeeba_common'))
 			->where($db->qn('key') . ' = :key')
