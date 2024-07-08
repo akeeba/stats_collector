@@ -56,7 +56,10 @@ final class CompatibilityAdapter implements AdapterInterface
 			 * Collect any entropy available from the PHP system and filesystem.
 			 * If we have ssl data that isn't strong, we use it once.
 			 */
-			$entropy = rand() . uniqid(mt_rand(), true);
+			$entropy = function_exists('random_bytes') && function_exists('bin2hex')
+				? bin2hex(random_bytes($bytes))
+				: uniqid(mt_rand(), true);
+			$entropy .= rand();
 			$entropy .= implode('', @fstat(fopen(__FILE__, 'r')));
 			$entropy .= memory_get_usage();
 
