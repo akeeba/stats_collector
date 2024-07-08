@@ -7,6 +7,8 @@
 
 namespace Akeeba\UsageStats\Collector\Random\Adapter;
 
+use Akeeba\UsageStats\Collector\LegacyShim\HashHelper;
+
 /**
  * Random Bytes adapter with a pure PHP implementation for maximum backwards compatibility.
  *
@@ -83,11 +85,11 @@ final class CompatibilityAdapter implements AdapterInterface
 				for ($pass = 0; $pass < $samples; ++$pass)
 				{
 					$microStart = microtime(true) * 1000000;
-					$hash       = sha1(mt_rand(), true);
+					$hash       = HashHelper::sha1(mt_rand(), true);
 
 					for ($count = 0; $count < 50; ++$count)
 					{
-						$hash = sha1($hash, true);
+						$hash = HashHelper::sha1($hash, true);
 					}
 
 					$microEnd = microtime(true) * 1000000;
@@ -118,18 +120,18 @@ final class CompatibilityAdapter implements AdapterInterface
 				for ($pass = 0; $pass < $iter; ++$pass)
 				{
 					$microStart = microtime(true);
-					$hash       = sha1(mt_rand(), true);
+					$hash       = HashHelper::sha1(mt_rand(), true);
 
 					for ($count = 0; $count < $rounds; ++$count)
 					{
-						$hash = sha1($hash, true);
+						$hash = HashHelper::sha1($hash, true);
 					}
 
 					$entropy .= $microStart . microtime(true);
 				}
 			}
 
-			$randomStr .= sha1($entropy, true);
+			$randomStr .= HashHelper::sha1($entropy, true);
 		}
 
 		if ($urandom)

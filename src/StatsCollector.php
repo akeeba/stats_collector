@@ -11,6 +11,7 @@ use Akeeba\UsageStats\Collector\CmsInfo\CmsInfo;
 use Akeeba\UsageStats\Collector\CommonVariables\CommonVariables;
 use Akeeba\UsageStats\Collector\Constants\SoftwareType;
 use Akeeba\UsageStats\Collector\DatabaseInfo\DatabaseInfo;
+use Akeeba\UsageStats\Collector\LegacyShim\HashHelper;
 use Akeeba\UsageStats\Collector\Random\Random;
 use Akeeba\UsageStats\Collector\Sender\Sender;
 use Akeeba\UsageStats\Collector\SiteUrl\SiteUrl;
@@ -288,14 +289,14 @@ final class StatsCollector
 
 		if (empty($siteId)
 		    || (!empty($currentUrl)
-		        && md5($currentUrl) !== $this->commonVariables->getCommonVariable(
+		        && HashHelper::md5($currentUrl) !== $this->commonVariables->getCommonVariable(
 					'stats_siteurl', null
 				)))
 		{
-			$siteUrl = md5($currentUrl);
+			$siteUrl = HashHelper::md5($currentUrl);
 			$this->commonVariables->setCommonVariable('stats_siteurl', $siteUrl);
 
-			$siteId = sha1($this->randomGenerator->getRandomBytes(120));
+			$siteId = HashHelper::sha1($this->randomGenerator->getRandomBytes(120));
 			$this->commonVariables->setCommonVariable('stats_siteid', $siteId);
 		}
 
