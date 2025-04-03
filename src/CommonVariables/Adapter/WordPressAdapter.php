@@ -32,7 +32,7 @@ final class WordPressAdapter implements AdapterInterface
 		$tableName = $db->prefix . 'akeeba_common';
 
 		$query = 'SELECT `value` FROM `' . $tableName . '` WHERE `key` = %s';
-		$db->prepare($query, $key);
+		$query = $db->prepare($query, $key);
 
 		return $db->get_var($query) ?? $default;
 	}
